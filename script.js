@@ -1,0 +1,1 @@
+window.addEventListener("load",function(){setTimeout(function(){document.getElementById("loader").classList.add("hide")},1800)});document.getElementById("addressButton").addEventListener("click",function(){var d=document.getElementById("addressDetails"),box=document.querySelector(".address");d.classList.toggle("open");box.classList.toggle("open")});
