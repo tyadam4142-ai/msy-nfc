@@ -1,0 +1,1 @@
+addEventListener("load",()=>setTimeout(()=>document.getElementById("loader").classList.add("hide"),2100));const b=document.getElementById("toggle"),d=document.getElementById("details");b.onclick=()=>{d.classList.toggle("open");b.parentElement.classList.toggle("open")};
