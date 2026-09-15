@@ -9,18 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initVCardGenerator();
 });
 
-/* 1. Loader screen dismissal */
+/* 1. Loader Screen Removal */
 function initLoader() {
   const loader = document.getElementById('loader');
-  setTimeout(() => {
-    if (loader) {
+  if (loader) {
+    setTimeout(() => {
       loader.classList.add('fade-out');
-      setTimeout(() => { loader.style.display = 'none'; }, 500);
-    }
-  }, 1500);
+      setTimeout(() => { loader.style.display = 'none'; }, 400);
+    }, 1200);
+  }
 }
 
-/* 2. Steel/Metallic particle canvas */
+/* 2. Steel/Metallic Background Canvas */
 function initParticleBackground() {
   const canvas = document.getElementById('particle-canvas');
   if (!canvas) return;
@@ -35,7 +35,7 @@ function initParticleBackground() {
   });
 
   const particles = [];
-  const particleCount = Math.min(Math.floor(width / 18), 35);
+  const particleCount = Math.min(Math.floor(width / 20), 30);
 
   class Particle {
     constructor() {
@@ -49,7 +49,6 @@ function initParticleBackground() {
       this.speedY = -(Math.random() * 0.3 + 0.1);
       this.speedX = (Math.random() - 0.5) * 0.2;
       this.opacity = Math.random() * 0.4 + 0.2;
-      // Alternate between blue and red ambient particles
       this.color = Math.random() > 0.5 ? '30, 136, 229' : '229, 57, 53';
     }
 
@@ -89,7 +88,7 @@ function initParticleBackground() {
   animate();
 }
 
-/* 3. Address Accordion */
+/* 3. Address Accordion Toggle */
 function initAddressAccordion() {
   const toggleBtn = document.getElementById('toggle-address-btn');
   const addressContent = document.getElementById('address-content');
@@ -103,7 +102,7 @@ function initAddressAccordion() {
   });
 }
 
-/* 4. vCard Download (.vcf) */
+/* 4. Contact Card (.vcf) Generator */
 function initVCardGenerator() {
   const saveBtn = document.getElementById('save-vcard-btn');
   if (!saveBtn) return;
@@ -135,3 +134,4 @@ function initVCardGenerator() {
     URL.revokeObjectURL(url);
   });
 }
+
