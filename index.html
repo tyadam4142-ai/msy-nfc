@@ -22,12 +22,661 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Embedded Stylesheet (No External CSS Dependency) -->
+  <style>
+    /* ==========================================================================
+       MOHAMMEDI STEEL YARD - DYNAMIC BRAND STYLESHEET
+       Color Scheme: Royal Blue (#1e88e5) & Crimson Red (#e53935)
+       ========================================================================== */
+
+    :root {
+      --bg-dark: #0b0e14;
+      --card-bg: rgba(18, 24, 38, 0.92);
+      --card-border: rgba(30, 136, 229, 0.35);
+      
+      --msy-red: #e53935;
+      --msy-red-hover: #ff5252;
+      --msy-blue: #1e88e5;
+      --msy-blue-hover: #42a5f5;
+      
+      --text-primary: #ffffff;
+      --text-secondary: #90a4ae;
+      --text-blue: #90caf9;
+      
+      --font-heading: 'Rajdhani', sans-serif, system-ui;
+      --font-body: 'Montserrat', sans-serif, system-ui;
+      
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      
+      --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 12px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* 1. LOADER SCREEN (With CSS Auto-Hide Fallback) */
+    .loader-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--bg-dark);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: autoHideLoader 0.5s ease 1.6s forwards;
+    }
+
+    @keyframes autoHideLoader {
+      to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
+
+    .loader-overlay.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .loader-content {
+      text-align: center;
+      max-width: 320px;
+      width: 90%;
+    }
+
+    .loader-logo-ring {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader-logo-ring::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: var(--msy-red);
+      border-bottom-color: var(--msy-blue);
+      animation: spin 1.2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loader-msy-badge {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: bold;
+      color: var(--msy-blue);
+      letter-spacing: 2px;
+    }
+
+    .loader-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--msy-red);
+      margin-bottom: 4px;
+    }
+
+    .loader-subtitle {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .loader-bar {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .loader-progress {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--msy-blue), var(--msy-red));
+      animation: fillProgress 1.4s ease-in-out forwards;
+    }
+
+    @keyframes fillProgress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    /* 2. BACKGROUND CANVAS */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* 3. GLASS CONTAINER & HERO */
+    .card-container {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .glass-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 30px 20px;
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(30, 136, 229, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--msy-red), var(--msy-blue));
+    }
+
+    .card-hero {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .logo-wrapper {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-glow {
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      background: radial-gradient(circle, rgba(30, 136, 229, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.6; }
+      100% { transform: scale(1.15); opacity: 1; }
+    }
+
+    .logo-badge {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #101622;
+      border: 2px solid var(--msy-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.7);
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px;
+    }
+
+    .brand-logo-svg {
+      width: 65px;
+      height: 40px;
+    }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--msy-red);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .brand-tagline {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--text-secondary);
+    }
+
+    .divider-msy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 14px 0;
+      color: var(--msy-blue);
+      font-size: 10px;
+    }
+
+    .divider-msy::before, .divider-msy::after {
+      content: '';
+      height: 1px;
+      width: 45px;
+      background: linear-gradient(90deg, transparent, var(--msy-blue), transparent);
+      margin: 0 8px;
+    }
+
+    .owners-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .owner-pill {
+      background: rgba(30, 136, 229, 0.1);
+      border: 1px solid rgba(30, 136, 229, 0.3);
+      border-radius: 30px;
+      padding: 5px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .owner-pill .role {
+      font-size: 8px;
+      letter-spacing: 1.5px;
+      color: var(--text-blue);
+      font-weight: 700;
+    }
+
+    .owner-pill .name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    /* 4. BUTTONS & ACTIONS */
+    .vcard-section {
+      margin-bottom: 20px;
+    }
+
+    .btn-msy-action {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--msy-blue) 0%, #1565c0 100%);
+      border: none;
+      border-radius: var(--radius-md);
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 8px 20px rgba(30, 136, 229, 0.3);
+      transition: var(--transition);
+    }
+
+    .btn-msy-action:hover {
+      background: linear-gradient(135deg, var(--msy-blue-hover) 0%, var(--msy-blue) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(30, 136, 229, 0.45);
+    }
+
+    .actions-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .action-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+    }
+
+    .action-btn:hover {
+      background: rgba(30, 136, 229, 0.08);
+      border-color: var(--msy-blue);
+      transform: translateX(3px);
+    }
+
+    .icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: rgba(30, 136, 229, 0.15);
+      border: 1px solid rgba(30, 136, 229, 0.3);
+      color: var(--msy-blue-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .call-primary .icon-box {
+      background: rgba(229, 57, 53, 0.15);
+      border-color: rgba(229, 57, 53, 0.4);
+      color: var(--msy-red-hover);
+    }
+
+    .call-primary:hover {
+      border-color: var(--msy-red);
+      background: rgba(229, 57, 53, 0.08);
+    }
+
+    .whatsapp-btn .icon-box {
+      background: rgba(37, 211, 102, 0.12);
+      border-color: rgba(37, 211, 102, 0.3);
+      color: #25D366;
+    }
+
+    .whatsapp-btn:hover {
+      border-color: #25D366;
+      background: rgba(37, 211, 102, 0.08);
+    }
+
+    .email-btn .icon-box {
+      background: rgba(255, 179, 0, 0.12);
+      border-color: rgba(255, 179, 0, 0.3);
+      color: #ffb300;
+    }
+
+    .email-btn:hover {
+      border-color: #ffb300;
+      background: rgba(255, 179, 0, 0.08);
+    }
+
+    .btn-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn-text .label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+    }
+
+    .btn-text .val {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .action-btn .arrow {
+      font-size: 11px;
+      color: var(--text-secondary);
+      opacity: 0.5;
+    }
+
+    /* 5. EXPANDABLE ADDRESS & ACCORDION */
+    .expandable-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(229, 57, 53, 0.25);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 14px 16px;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .accordion-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .msy-red-icon {
+      color: var(--msy-red);
+      font-size: 14px;
+    }
+
+    .accordion-arrow {
+      color: var(--msy-red);
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-header[aria-expanded="true"] .accordion-arrow {
+      transform: rotate(180deg);
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0 16px;
+    }
+
+    .accordion-body.open {
+      max-height: 300px;
+      padding: 10px 16px 16px;
+    }
+
+    .location-card h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .location-card p {
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .loc-badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--msy-red-hover);
+      background: rgba(229, 57, 53, 0.15);
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+
+    .btn-maps {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #ffffff;
+      text-decoration: none;
+      background: rgba(229, 57, 53, 0.15);
+      border: 1px solid rgba(229, 57, 53, 0.4);
+      padding: 7px 12px;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+
+    .btn-maps:hover {
+      background: var(--msy-red);
+      color: #ffffff;
+    }
+
+    /* 6. TAGS & GALLERY */
+    .products-section {
+      margin-bottom: 18px;
+    }
+
+    .section-heading {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      text-align: center;
+      letter-spacing: 2px;
+      color: var(--msy-blue-hover);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .section-heading span {
+      font-size: 9px;
+      color: var(--msy-red);
+    }
+
+    .tags-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .product-tag {
+      background: rgba(30, 136, 229, 0.08);
+      border: 1px solid rgba(30, 136, 229, 0.2);
+      border-radius: 16px;
+      padding: 5px 10px;
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .product-tag i {
+      font-size: 9px;
+      color: var(--msy-red);
+    }
+
+    .gallery-section {
+      margin-bottom: 18px;
+    }
+
+    .card-photo-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 6px;
+      overflow: hidden;
+    }
+
+    .card-img-preview {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+    }
+
+    /* 7. FOOTER */
+    .card-footer {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 14px;
+      margin-top: 10px;
+    }
+
+    .footer-tagline {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--msy-red);
+      margin-bottom: 4px;
+    }
+
+    .footer-nfc {
+      font-size: 9px;
+      color: var(--text-secondary);
+    }
+
+    .footer-nfc i {
+      color: var(--msy-blue);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Startup Loading Screen (Includes CSS Auto-Hide Failsafe) -->
+  <!-- Startup Loading Screen -->
   <div id="loader" class="loader-overlay">
     <div class="loader-content">
       <div class="loader-logo-ring">
@@ -179,7 +828,124 @@
     </div>
   </main>
 
-  <!-- JavaScript -->
-  <script src="script.js"></script>
+  <!-- Embedded JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initLoader();
+      initParticleBackground();
+      initAddressAccordion();
+      initVCardGenerator();
+    });
+
+    function initLoader() {
+      const loader = document.getElementById('loader');
+      if (loader) {
+        setTimeout(() => {
+          loader.classList.add('fade-out');
+          setTimeout(() => { loader.style.display = 'none'; }, 400);
+        }, 1200);
+      }
+    }
+
+    function initParticleBackground() {
+      const canvas = document.getElementById('particle-canvas');
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const particleCount = Math.min(Math.floor(width / 20), 30);
+
+      class Particle {
+        constructor() { this.reset(); }
+        reset() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.size = Math.random() * 2 + 0.5;
+          this.speedY = -(Math.random() * 0.3 + 0.1);
+          this.speedX = (Math.random() - 0.5) * 0.2;
+          this.opacity = Math.random() * 0.4 + 0.2;
+          this.color = Math.random() > 0.5 ? '30, 136, 229' : '229, 57, 53';
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX;
+          if (this.y < 0 || this.x < 0 || this.x > width) {
+            this.reset();
+            this.y = height + 10;
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = `rgb(${this.color})`;
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach((p) => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    function initAddressAccordion() {
+      const toggleBtn = document.getElementById('toggle-address-btn');
+      const addressContent = document.getElementById('address-content');
+
+      if (!toggleBtn || !addressContent) return;
+
+      toggleBtn.addEventListener('click', () => {
+        const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        toggleBtn.setAttribute('aria-expanded', !isExpanded);
+        addressContent.classList.toggle('open');
+      });
+    }
+
+    function initVCardGenerator() {
+      const saveBtn = document.getElementById('save-vcard-btn');
+      if (!saveBtn) return;
+
+      saveBtn.addEventListener('click', () => {
+        const vCardData = [
+          'BEGIN:VCARD',
+          'VERSION:3.0',
+          'FN:Tayab Bharmal (Mohammedi Steel Yard)',
+          'N:Bharmal;Tayab;;;',
+          'ORG:MOHAMMEDI STEEL YARD',
+          'TITLE:Proprietor',
+          'TEL;TYPE=CELL,VOICE:+919822057177',
+          'TEL;TYPE=WORK,VOICE:02027491321',
+          'EMAIL;TYPE=WORK:msypune@hotmail.com',
+          'ADR;TYPE=WORK:;;1367, Kudalwadi, Pawarvasti, Chikhli;Pune;Maharashtra;412114;India',
+          'NOTE:MOHAMMEDI STEEL YARD - Quality Steel Traders & Industrial Suppliers in Pune.',
+          'END:VCARD'
+        ].join('\n');
+
+        const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'Tayab_Bharmal_MohammediSteelYard.vcf');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      });
+    }
+  </script>
 </body>
 </html>
