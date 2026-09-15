@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0e14">
+  <title>Mohammedi Steel Yard | Tayab Bharmal - Steel Traders & Suppliers</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="title" content="Mohammedi Steel Yard | Tayab Bharmal">
+  <meta name="description" content="Mohammedi Steel Yard (MSY) - Premium Steel Traders & Industrial Suppliers in Chikhli, Pune. Contact Tayab Bharmal for all steel inquiries.">
+  <meta name="keywords" content="Mohammedi Steel Yard, MSY Pune, Tayab Bharmal, Steel Yard Chikhli, Kudalwadi steel, TMT bars, steel plates, industrial steel">
+
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mohammedi Steel Yard | Tayab Bharmal">
+  <meta property="og:description" content="Quality Industrial Steel Supplies in Pune. Connect with us instantly via Call, WhatsApp, or Email.">
+  <meta property="og:image" content="images/card.jpg">
+
+  <!-- Google Fonts: Rajdhani & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Startup Loading Screen -->
+  <div id="loader" class="loader-overlay">
+    <div class="loader-content">
+      <div class="loader-logo-ring">
+        <div class="loader-msy-badge">MSY</div>
+      </div>
+      <h2 class="loader-title">MOHAMMEDI STEEL YARD</h2>
+      <p class="loader-subtitle">STEEL TRADERS &amp; SUPPLIERS</p>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+  </div>
+
+  <!-- Ambient Metallic/Steel Particle Background -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Main Digital Business Card Container -->
+  <main class="card-container">
+    <div class="glass-card">
+
+      <!-- Hero Header Section -->
+      <section class="card-hero">
+        <div class="logo-wrapper">
+          <div class="logo-glow"></div>
+          <div class="logo-badge">
+            <!-- If images/logo.png is not present, the fallback SVG displays smoothly -->
+            <img src="images/logo.png" alt="MSY Logo" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('msy-svg-fallback').style.display='block';">
+            
+            <svg id="msy-svg-fallback" class="brand-logo-svg" viewBox="0 0 120 70" style="display:none;">
+              <path d="M 15 35 C 15 15, 105 15, 105 35 C 105 55, 15 55, 15 35 Z" fill="none" stroke="#1e88e5" stroke-width="4"/>
+              <path d="M 22 35 C 22 22, 98 22, 98 35 C 98 48, 22 48, 22 35 Z" fill="none" stroke="#e53935" stroke-width="2"/>
+              <text x="60" y="42" font-family="'Rajdhani', sans-serif" font-size="22" font-weight="bold" fill="#1e88e5" text-anchor="middle">MSY</text>
+            </svg>
+          </div>
+        </div>
+
+        <h1 class="brand-name">MOHAMMEDI STEEL YARD</h1>
+        <p class="brand-tagline">QUALITY STEEL TRADING &amp; SUPPLIES</p>
+        
+        <div class="divider-msy"><span>❖</span></div>
+
+        <!-- Proprietor Information -->
+        <div class="owners-container">
+          <div class="owner-pill">
+            <span class="role">PROPRIETOR</span>
+            <span class="name">Tayab Bharmal</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Save Contact vCard CTA -->
+      <section class="vcard-section">
+        <button id="save-vcard-btn" class="btn-msy-action">
+          <i class="fa-solid fa-address-card"></i>
+          <span>Save Contact Card</span>
+        </button>
+      </section>
+
+      <!-- Action Buttons Section -->
+      <section class="actions-grid">
+        <!-- Call Mobile -->
+        <a href="tel:+919822057177" class="action-btn call-primary">
+          <div class="icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <div class="btn-text">
+            <span class="label">Call Mobile (Tayab Bharmal)</span>
+            <span class="val">+91 9822057177</span>
+          </div>
+          <i class="fa-solid fa-chevron-right arrow"></i>
+        </a>
+
+        <!-- Call Landline -->
+        <a href="tel:02027491321" class="action-btn call-landline">
+          <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+          <div class="btn-text">
+            <span class="label">Telephone Line</span>
+            <span class="val">020 27491321</span>
+          </div>
+          <i class="fa-solid fa-chevron-right arrow"></i>
+        </a>
+
+        <!-- WhatsApp Message Direct -->
+        <a href="https://wa.me/919822057177?text=Hello%20Mohammedi%20Steel%20Yard,%20I%20got%20your%20contact%20and%20would%20like%20to%20inquire%20about%20steel%20supplies." target="_blank" class="action-btn whatsapp-btn">
+          <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+          <div class="btn-text">
+            <span class="label">WhatsApp Direct</span>
+            <span class="val">Message on WhatsApp</span>
+          </div>
+          <i class="fa-solid fa-chevron-right arrow"></i>
+        </a>
+
+        <!-- Email Direct -->
+        <a href="mailto:msypune@hotmail.com?subject=Steel%20Supply%20Inquiry%20-%20Mohammedi%20Steel%20Yard" class="action-btn email-btn">
+          <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+          <div class="btn-text">
+            <span class="label">Email Address</span>
+            <span class="val">msypune@hotmail.com</span>
+          </div>
+          <i class="fa-solid fa-chevron-right arrow"></i>
+        </a>
+      </section>
+
+      <!-- Expandable Yard Location & Address -->
+      <section class="expandable-card">
+        <button id="toggle-address-btn" class="accordion-header" aria-expanded="false">
+          <div class="accordion-title">
+            <i class="fa-solid fa-location-dot msy-red-icon"></i>
+            <span>Yard Location &amp; Address</span>
+          </div>
+          <i class="fa-solid fa-angle-down accordion-arrow"></i>
+        </button>
+
+        <div id="address-content" class="accordion-body">
+          <div class="location-card">
+            <div class="loc-badge">Chikhli, Pune Yard</div>
+            <h3>1367, Kudalwadi, Pawarvasti</h3>
+            <p>Chikhli, Pune - 412 114, Maharashtra, India</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=1367,+Kudalwadi,+Pawarvasti,+Chikhli,+Pune+-+412114" target="_blank" class="btn-maps">
+              <i class="fa-solid fa-map-location-dot"></i> Open in Google Maps
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Steel Products Tag Cloud -->
+      <section class="products-section">
+        <h2 class="section-heading"><span>❖</span> Materials &amp; Products <span>❖</span></h2>
+        <div class="tags-cloud">
+          <span class="product-tag"><i class="fa-solid fa-cubes-stacked"></i> Structural Steel</span>
+          <span class="product-tag"><i class="fa-solid fa-sheet-plastic"></i> Steel Plates</span>
+          <span class="product-tag"><i class="fa-solid fa-bars"></i> TMT Rebars</span>
+          <span class="product-tag"><i class="fa-solid fa-layer-group"></i> Mild Steel (MS)</span>
+          <span class="product-tag"><i class="fa-solid fa-industry"></i> Channels &amp; Angles</span>
+          <span class="product-tag"><i class="fa-solid fa-grip-lines"></i> MS Pipes &amp; Tubes</span>
+          <span class="product-tag"><i class="fa-solid fa-warehouse"></i> Industrial Supplies</span>
+        </div>
+      </section>
+
+      <!-- Business Card Photo Preview Section -->
+      <section class="gallery-section">
+        <h2 class="section-heading"><span>❖</span> Business Card Reference <span>❖</span></h2>
+        <div class="card-photo-box">
+          <img src="images/card.jpg" alt="Mohammedi Steel Yard Business Card" class="card-img-preview" onerror="this.parentElement.style.display='none';">
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="card-footer">
+        <p class="footer-tagline">MOHAMMEDI STEEL YARD • PUNE</p>
+        <p class="footer-nfc"><i class="fa-solid fa-wifi"></i> NFC Business Contact Profile</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
